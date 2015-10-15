@@ -32,6 +32,9 @@ app.service('dataService', function () {
       author: 'Tyler S. McGinnis'
     }
   ];
+  
+  localStorage.setItem('quotes', JSON.stringify(quotes));
+  var restoredQuotes = JSON.parse(localStorage.getItem('quotes'));
 
   this.getData = function () {
 
@@ -44,8 +47,8 @@ app.service('dataService', function () {
     if (dataObject.hasOwnProperty('text') && dataObject.hasOwnProperty('author')) {
 
       quotes.push(dataObject);
+      
     }
-
   }
   
   this.removeData = function (quoteText){
@@ -56,8 +59,13 @@ app.service('dataService', function () {
        
        quotes.splice(i, 1)
     }
-   }  
+   }
   }
 
 
+   
+  
+  
+  console.log(restoredQuotes);
+  
 });
